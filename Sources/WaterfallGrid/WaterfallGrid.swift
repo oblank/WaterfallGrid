@@ -7,7 +7,7 @@
 import SwiftUI
 
 /// A container that presents items of variable heights arranged in a grid.
-@available(iOS 13, OSX 10.15, tvOS 13, watchOS 6, *)
+@available(iOS 13, OSX 11, tvOS 13, watchOS 6, *)
 public struct WaterfallGrid<Data, ID, Content>: View where Data : RandomAccessCollection, Content : View, ID : Hashable {
 
     @Environment(\.gridStyle) private var style
@@ -25,7 +25,7 @@ public struct WaterfallGrid<Data, ID, Content>: View where Data : RandomAccessCo
     }
     
     public var body: some View {
-        VStack {
+        LazyVStack {
             GeometryReader { geometry in
                 self.grid(in: geometry)
                     .onPreferenceChange(ElementPreferenceKey.self, perform: { preferences in
